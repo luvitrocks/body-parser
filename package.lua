@@ -1,6 +1,6 @@
 return {
   name = "voronianski/body-parser",
-  version = "1.0.0",
+  version = "1.0.1",
   description = "Body parsing middleware for Utopia and Luvit.io.",
   tags = { "luvit", "utopia", "body", "request", "middleware", "json", "urlencoded", "raw", "parse" },
   license = "MIT",

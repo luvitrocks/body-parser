@@ -12,7 +12,7 @@ function parseJson (opts)
       local firstChar = buf:sub(1, 1)
 
       -- http://www.rfc-editor.org/rfc/rfc7159.txt
-      if opts.strict and firstChar ~= '[' or firstChar ~= '{' then
+      if opts.strict and firstChar ~= '[' and firstChar ~= '{' then
         return nxt({status = 400, msg = 'invalid json'})
       end
 
