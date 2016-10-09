@@ -9,9 +9,8 @@ _This does not handle multipart bodies_, due to their complex and typically larg
 This module provides the following parsers:
 
 - [JSON body parser](https://github.com/luvitrocks/body-parser#bodyparserjsonoptions)
-- Raw body parser
-- Text body parser
 - [URL-encoded form body parser](https://github.com/luvitrocks/body-parser#bodyparserurlencodedoptions)
+- [Text body parser](https://github.com/luvitrocks/body-parser#bodyparsertextoptions)
 
 ## Install
 
