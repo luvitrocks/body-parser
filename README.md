@@ -29,18 +29,44 @@ The bodyParser table exposes various factories to create middlewares. All middle
 
 ### `bodyParser.json(options)`
 
+Returns middleware that only parses `json`.
+
 ### Options
 
-The `json` function takes an `options` table that may contain any of
+The function takes an `options` table that may contain any of
 the following keys:
 
-- `limit` - controls the maximum request body size, specifies the number of bytes.
+- `limit` - controls the maximum request body size, specifies the number of bytes. Defaults to `100000` (~`100Kb`)
 
 - `strict` - when set to `true`, will only accept arrays and objects; when `false` will accept anything `JSON.parse` accepts. Defaults to `true`.
 
 - `type` - the `type` option is used to determine what media type the middleware will parse. Defaults to `application/json`.
 
 ### `bodyParser.urlencoded(options)`
+
+Returns middleware that only parses urlencoded bodies.
+
+### Options
+
+The function takes an `options` table that may contain any of
+the following keys:
+
+- `limit` - controls the maximum request body size, specifies the number of bytes. Defaults to `100000` (~ `100Kb`)
+
+- `type` - the `type` option is used to determine what media type the middleware will parse. Defaults to `application/x-www-form-urlencoded`.
+
+### `bodyParser.text(options)`
+
+Returns middleware that parses all bodies as a string.
+
+### Options
+
+The function takes an `options` table that may contain any of
+the following keys:
+
+- `limit` - controls the maximum request body size, specifies the number of bytes. Defaults to `100000` (~`100Kb`)
+
+- `type` - the `type` option is used to determine what media type the middleware will parse. Defaults to `text/plain`.
 
 ## Examples
 
@@ -49,20 +75,20 @@ the following keys:
 This example demonstrates adding a generic JSON and URL-encoded parser as a top-level middleware, which will parse the bodies of all incoming requests. This is the simplest setup.
 
 ```lua
-local JSON = requrie('json')
+local json = requrie('json')
 local Utopia = require('utopia')
 local bodyParser = require('body-parser')
 
 local app = Utopia:new()
 
 -- parse application/x-www-form-urlencoded
-app:use(bodyParser.urlencoded({extended = false}))
+app:use(bodyParser.urlencoded())
 
 -- parse application/json
 app:use(bodyParser.json())
 
 app:use(function (req, res)
-  res:finish('you posted: ' .. JSON.stringify(req.body, {indent = 2}))
+  res:finish('you posted: ' .. json.stringify(req.body, {indent = 2}))
 end)
 
 app:listen(3000)
