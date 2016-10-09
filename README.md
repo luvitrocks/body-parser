@@ -8,10 +8,10 @@ _This does not handle multipart bodies_, due to their complex and typically larg
 
 This module provides the following parsers:
 
-- JSON body parser
+- [JSON body parser](https://github.com/luvitrocks/body-parser#bodyparserjsonoptions)
 - Raw body parser
 - Text body parser
-- URL-encoded form body parser
+- [URL-encoded form body parser](https://github.com/luvitrocks/body-parser#bodyparserurlencodedoptions)
 
 ## Install
 
@@ -29,11 +29,22 @@ The bodyParser table exposes various factories to create middlewares. All middle
 
 ### `bodyParser.json(options)`
 
+### Options
+
+The `json` function takes an `options` table that may contain any of
+the following keys:
+
+- `limit` - controls the maximum request body size, specifies the number of bytes.
+
+- `strict` - when set to `true`, will only accept arrays and objects; when `false` will accept anything `JSON.parse` accepts. Defaults to `true`.
+
+- `type` - the `type` option is used to determine what media type the middleware will parse. Defaults to `application/json`.
+
 ### `bodyParser.urlencoded(options)`
 
 ## Examples
 
-## Utopia top-level generic
+### Utopia top-level generic
 
 This example demonstrates adding a generic JSON and URL-encoded parser as a top-level middleware, which will parse the bodies of all incoming requests. This is the simplest setup.
 
@@ -53,9 +64,11 @@ app:use(bodyParser.json())
 app:use(function (req, res)
   res:finish('you posted: ' .. JSON.stringify(req.body, {indent = 2}))
 end)
+
+app:listen(3000)
 ```
 
-## Change accepted type for parsers
+### Change accepted type for parsers
 
 All the parsers accept a type option which allows you to change the Content-Type that the middleware will parse.
 
