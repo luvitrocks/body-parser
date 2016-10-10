@@ -11,7 +11,7 @@ This module provides the following parsers:
 - [JSON body parser](https://github.com/luvitrocks/body-parser#bodyparserjsonoptions)
 - [URL-encoded form body parser](https://github.com/luvitrocks/body-parser#bodyparserurlencodedoptions)
 - [Text body parser](https://github.com/luvitrocks/body-parser#bodyparsertextoptions)
-- [Raw body parser]()
+- [Raw body parser](https://github.com/luvitrocks/body-parser#bodyparserrawoptions)
 
 ## Install
 
