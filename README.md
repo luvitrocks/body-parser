@@ -11,6 +11,7 @@ This module provides the following parsers:
 - [JSON body parser](https://github.com/luvitrocks/body-parser#bodyparserjsonoptions)
 - [URL-encoded form body parser](https://github.com/luvitrocks/body-parser#bodyparserurlencodedoptions)
 - [Text body parser](https://github.com/luvitrocks/body-parser#bodyparsertextoptions)
+- [Raw body parser]()
 
 ## Install
 
@@ -66,6 +67,19 @@ the following keys:
 - `limit` - controls the maximum request body size, specifies the number of bytes. Defaults to `100000` (~`100Kb`)
 
 - `type` - the `type` option is used to determine what media type the middleware will parse. Defaults to `text/plain`.
+
+### `bodyParser.raw(options)`
+
+Returns middleware that parses all bodies as a `Buffer`.
+
+### Options
+
+The function takes an `options` table that may contain any of
+the following keys:
+
+- `limit` - controls the maximum request body size, specifies the number of bytes. Defaults to `100000` (~`100Kb`)
+
+- `type` - the `type` option is used to determine what media type the middleware will parse. Defaults to `application/octet-stream`.
 
 ## Examples
 

@@ -1,4 +1,3 @@
-local qs = require('querystring')
 local read = require('./read')
 
 function parsePlainText (opts)
